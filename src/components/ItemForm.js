@@ -4,8 +4,15 @@ function ItemForm() {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("Produce");
 
+  // add a function to handle submissions
+  function handleSubmit(event) {
+    event.preventDefault()
+    console.log("name: ", name)
+    console.log("category: ", category)
+  }
+
   return (
-    <form className="NewItem">
+    <form className="NewItem" onSubmit={handleSubmit}>
       <label>
         Name:
         <input
