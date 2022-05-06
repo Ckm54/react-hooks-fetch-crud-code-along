@@ -14,7 +14,19 @@ function ShoppingList() {
   }, []);
 
   function handleAddItem(newItem) {
-    console.log("in shopping List: ", newItem)
+    setItems([...items, newItem])
+  }
+
+  function handleUpdateItem(updatedItem) {
+    // replace one item with the newly updated item from the server
+    const updatedItems = items.map((item) => {
+      if(item.id === updatedItem.id) {
+        return updatedItem
+      } else {
+        return item;
+      }
+    });
+    setItems(updatedItems)
   }
 
   function handleCategoryChange(category) {
@@ -36,7 +48,7 @@ function ShoppingList() {
       />
       <ul className="Items">
         {itemsToDisplay.map((item) => (
-          <Item key={item.id} item={item} />
+          <Item key={item.id} item={item} onUpdateItem={handleUpdateItem}/>
         ))}
       </ul>
     </div>
