@@ -7,8 +7,12 @@ function ItemForm() {
   // add a function to handle submissions
   function handleSubmit(event) {
     event.preventDefault()
-    console.log("name: ", name)
-    console.log("category: ", category)
+    const itemData = {
+      name: name,
+      category: category,
+      isInCart: false,
+    }
+    console.log(itemData)
   }
 
   return (
