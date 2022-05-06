@@ -11,7 +11,11 @@ function ShoppingList() {
     fetch("http://localhost:4000/items")
     .then((response) => response.json())
     .then((data) => setItems(data))
-  }, [])
+  }, []);
+
+  function handleAddItem(newItem) {
+    console.log("in shopping List: ", newItem)
+  }
 
   function handleCategoryChange(category) {
     setSelectedCategory(category);
@@ -25,7 +29,7 @@ function ShoppingList() {
 
   return (
     <div className="ShoppingList">
-      <ItemForm />
+      <ItemForm onAddItem={handleAddItem}/>
       <Filter
         category={selectedCategory}
         onCategoryChange={handleCategoryChange}
